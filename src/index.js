@@ -55,7 +55,6 @@ fs.readFile('index.html', 'utf8', function (err,data) {
 
 
 
-
 // // Shortened for readability
 // let filepath = ' C:/Users/MMM/Desktop/32/serve/src/subfile/mahergo.jpg';
 
