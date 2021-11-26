@@ -1,13 +1,169 @@
 var express = require('express');
-const newsRouter = express.Router()
+const router = express.Router()
+const user  = require('./users/user.js')
+require('./mongo.js');
 
-newsRouter.get('', async(req, res) => {
 
- res.sendFile('C:/Users/MMM/Desktop/32/serve/views/articles.html');
+
+
+
+router.post("/jaja", (req, res) => {
+  const user2 =new user(req.body)
+
+  console.log(req.body)
+
+user2.save(function(error, userDoc) {
+if(error){
+  res.status(404)
+  res.send(error)
+}
+
+console.log(user2)
+res.send(user2 );
+
+ });
+
+
+
+});
+
+//router.use(router)
+router.get('/pepe',(req,res)=>{
+
+res.send('hello pepe')
+
+})
+
+
+
+router.get('/ma',(req,res) =>{
+
+
+
+user.find().then(function(error, userDoc) {
+if(error){
+   console.log(user  )
+
+
+res.status(404).send(error);
+
+}
+//conole.log(req.params)
+ console.log(user  )
+
+res.status(200).send(user);
+
+
+ } )
+
+})
+
+
+router.get("/", (request, response) => {
+       response.status(200).send("Hello there");
+})
+
+
+
+
+
+
+
+
+router.get('/ma/:id',(req,res) =>{
+
+const _id = req.params.id
+
+
+user.findById(_id).then(function(error, userDoc) {
+if(error){
+   console.log(!user  )
+
+
+res.status(404).send(error);
+
+}
+//conole.log(req.params)
+ console.log(user  )
+
+res.status(200).send(user);
+
+
+ } )
+
+})
+
+
+router.post("/far", async(req, res) => {
+
+ const user2 =  new user(req.body)
+
+try{
+
+ await user2.save()
+  res.status(201).send(user2);
+
+} catch(error){
+   res.status(401).send(error);
+
+}
+
+
+ });
+
+// app.patch('/users/:id')
+
+router.get('/user/:id',(req,res)=>{
+ const user2 =  new user(req.body.email)
+res.send(user2)
+
+})
+
+
+router.patch('/user/:id', async(req,res) =>{
+try{
+  const user3 = await user.findByIdAndUpdate(req.params.id, req.body, {new:true,runValidators:true })
+
+if(!user3){
+return res.status(404).send()
+
+
+}
+res.send(user3)
+}
+catch(e){
+return res.status(400).send(e)
+
+
+}
+
+
+ }
+
+
+ )
+
+
+
+
+
+
+router.get('/man', (req, res) => {
+
+ res.render('sections/indo.ejs');
 
 
 
 } )
 
 
-module.exports = newsRouter
+
+
+module.exports = router
+
+
+
+
+
+
+
