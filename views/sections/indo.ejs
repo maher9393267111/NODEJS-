@@ -1,20 +1,19 @@
-
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="bootstrap.min.css"></link>
-<script src='bootstrap/min.js'></script>
-
-<%- include('../layout/navbar.ejs' ); -%>
-
-    <div>
-        <h1>maher </h1>
-<h1>Homepage hereeeeeeeeeeee man woman ladys gentelman</h1>
-
-
-    </div>
-
-    <div id="liveAlertPlaceholder"></div>
-    <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-
-
-    <script src='bootstrap/min.js'></script>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <!-- The only available methods through the HTML <from> tag are: GET and POST -->
+    <form action="/contact" method="POST">
+        <input type="text" name="email"      placeholder="email">
+        <input type="text" name="name"    placeholder="subject">
+        <textarea type="text" name="age" placeholder="message"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
