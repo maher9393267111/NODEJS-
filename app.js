@@ -93,18 +93,26 @@ mypass()
  const router1 = require("./exam.js");
 
 
- app.use( router1);
+ app.use(router1);
 
 
 // Routes END
 
 
 
-//const newsRouter2 = require("./routes2.js");
- //app.use("/about", newsRouter2);
+
+
+
+
+const newsRouter2 = require("./routes2");
+ app.use( newsRouter2);
 
 
 
 
   const pop = path.join(__dirname, "./public");
   app.use(express.static(pop));
+
+
+
+
